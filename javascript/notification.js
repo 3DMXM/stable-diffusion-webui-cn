@@ -2,20 +2,20 @@
 
 let lastHeadImg = null;
 
-notificationButton = null
+let notificationButton = null;
 
 onUiUpdate(function(){
     if(notificationButton == null){
         notificationButton = gradioApp().getElementById('request_notifications')
 
         if(notificationButton != null){
-            notificationButton.addEventListener('click', function (evt) {
-                Notification.requestPermission();
+            notificationButton.addEventListener('click', () => {
+                void Notification.requestPermission();
             },true);
         }
     }
 
-    const galleryPreviews = gradioApp().querySelectorAll('div[id^="tab_"][style*="display: block"] img.h-full.w-full.overflow-hidden');
+    const galleryPreviews = gradioApp().querySelectorAll('div[id^="tab_"][style*="display: block"] div[id$="_results"] .thumbnail-item > img');
 
     if (galleryPreviews == null) return;
 
